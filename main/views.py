@@ -10,9 +10,10 @@ def show_main(request):
     context = {
         'npm' : '2406407373',
         'name': 'Andrew Wanarahardja',
-        'class': 'PBP A'
+        'class': 'PBP A',
+        'news_list': news_list
     }
-
+    print(news_list)
     return render(request, "main.html", context)
 
 def create_news(request):
@@ -20,6 +21,7 @@ def create_news(request):
 
     if form.is_valid() and request.method == "POST":
         form.save()
+        print("n")
         return redirect('main:show_main')
 
     context = {'form': form}
